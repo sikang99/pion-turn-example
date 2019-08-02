@@ -52,8 +52,8 @@ git g:
 	@echo "make (git:g) [update|store]"
 git-update gu:
 	@make clean
-	git add .gitignore *.md Makefile go.??? turn-client/ turn-server/ Dockerfile
-	git commit -m "Add multi-stage Dockerfile"
+	git add .gitignore *.md Makefile go.??? turn-client/ turn-server/ Dockerfile*
+	git commit -m "Add multi-stage dockerfiles"
 	git push
 git-store gs:
 	git config credential.helper store
