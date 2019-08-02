@@ -18,5 +18,5 @@ USER appuser
 COPY --from=builder /build/bin/* /app/
 WORKDIR /app
 #RUN ls -al .
-ENV PIONS_LOG_INFO=all USERS=stoney=kang REALM=teamgrit UDP_PORT=3478 CHANNEL_BIND_TIMEOUT=100ms
+ENV PIONS_LOG_INFO=all USERS=stoney=kang REALM=teamgrit UDP_PORT=3478 CHANNEL_BIND_TIMEOUT=1000ms
 CMD ["./turn-server"]
