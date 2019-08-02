@@ -1,6 +1,7 @@
 ### History for developement
 
 - 2019/08/02
+    - add docker-compose.yml
     - add dockerfiles to build the docker image of turn
     - [Containerize This! How to build Golang Dockerfiles](https://www.cloudreach.com/en/insights/blog/containerize-this-how-to-build-golang-dockerfiles/)
     - NOTICE: CGO_ENABLED=0 is required under the alpine base
