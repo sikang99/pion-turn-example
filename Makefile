@@ -1,5 +1,5 @@
 #
-# Makefile for turn test
+# Makefile for testing turn example
 #
 CLIENT=turn-client
 SERVER=turn-server
@@ -9,11 +9,13 @@ usage:
 	@echo "make [edit|build|run]"
 #----------------------------------------------------------------------------------
 edit e:
-	@echo "make (edit:e) [client|server]"
+	@echo "make (edit:e) [client|server|history]"
 edit-client ec:
 	vi $(CLIENT)/main.go
 edit-server es:
 	vi $(SERVER)/main.go
+edit-history eh:
+	vi HISTORY.md
 #----------------------------------------------------------------------------------
 build b:
 	GO111MODULE=on go build -o $(CLIENT)/$(CLIENT) $(CLIENT)/main.go
