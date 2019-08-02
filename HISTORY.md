@@ -1,5 +1,9 @@
 ### History for developement
 
+
+- 2019/08/02
+    - add functions for slack interface using [nlopes/slack](https://github.com/nlopes/slack)
+
 - 2019/08/02
     - add docker-compose.yml
     - add dockerfiles to build the docker image of turn

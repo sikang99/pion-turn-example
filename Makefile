@@ -54,18 +54,20 @@ docker-push dp:
 	docker push $(IMAGE)
 #----------------------------------------------------------------------------------
 compose c:
-	@echo "make (compose:c) [up|down]"
+	@echo "make (compose:c) [up|down|status]"
 compose-up cu:
 	docker-compose up -d
 	docker-compose ps
 compose-down cd:
 	docker-compose down
+compose-status cs:
+	docker-compose ps
 #----------------------------------------------------------------------------------
 git g:
 	@echo "make (git:g) [update|store]"
 git-update gu:
 	git add .gitignore *.md Makefile go.??? turn-client/ turn-server/ Dockerfile* *.yml
-	git commit -m "Write user info checking"
+	git commit -m "Write slack interface"
 	git push
 git-store gs:
 	git config credential.helper store
