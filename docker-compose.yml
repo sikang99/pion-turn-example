@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+    turn:
+        image: teamgrit/pion-turn:0.0.2
+        ports: 
+            - "3478:3478"
+
+

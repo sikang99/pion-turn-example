@@ -22,7 +22,7 @@ build b:
 	CGO_ENABLED=0 GO111MODULE=on GOOS=linux go build -o bin/$(SERVER) $(SERVER)/main.go
 	@cp bin/* $(GOPATH)/bin
 	ls -al $(GOPATH)/bin/turn-*
-clean c:
+clean:
 	#rm -f $(GOPATH)/bin/$(CLIENT) $(GOPATH)/bin/$(SERVER)
 	rm -f bin/*
 	docker system prune
@@ -51,11 +51,18 @@ docker-build-multi dbm:
 docker-run dr:
 	docker run -i -t $(IMAGE) 
 #----------------------------------------------------------------------------------
+compose c:
+	@echo "make (compose:c) [up|down]"
+compose-run cr:
+	docker-compose up
+compose-down cd:
+	docker-compose down
+#----------------------------------------------------------------------------------
 git g:
 	@echo "make (git:g) [update|store]"
 git-update gu:
-	git add .gitignore *.md Makefile go.??? turn-client/ turn-server/ Dockerfile*
-	git commit -m "Add dockerfiles including multi-stage"
+	git add .gitignore *.md Makefile go.??? turn-client/ turn-server/ Dockerfile* *.yml
+	git commit -m "Add docker-compose.yml file"
 	git push
 git-store gs:
 	git config credential.helper store
