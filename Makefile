@@ -65,7 +65,7 @@ git g:
 	@echo "make (git:g) [update|store]"
 git-update gu:
 	git add .gitignore *.md Makefile go.??? turn-client/ turn-server/ Dockerfile* *.yml
-	git commit -m "Add docker-compose.yml file"
+	git commit -m "Write user info checking"
 	git push
 git-store gs:
 	git config credential.helper store

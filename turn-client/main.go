@@ -29,6 +29,9 @@ func main() {
 	}
 
 	cred := strings.Split(*user, "=")
+	if len(cred) < 2 {
+		log.Fatalf("user is not valid")
+	}
 
 	// TURN client won't create a local listening socket by itself.
 	conn, err := net.ListenPacket("udp4", "0.0.0.0:0")
