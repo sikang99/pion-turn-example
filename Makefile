@@ -3,7 +3,7 @@
 #
 CLIENT=turn-client
 SERVER=turn-server
-.PHONEY:usage edit
+.PHONY: usage edit build clean docker compose git
 #----------------------------------------------------------------------------------
 usage:
 	@echo "make [edit|build|run|docker|compose]"
@@ -41,7 +41,7 @@ NAME=teamgrit/pion-turn
 IMAGE=$(NAME):$(TAG)
 
 docker d:
-	@echo "make (docker:d) [build]"
+	@echo "make (docker:d) [build|run|push]"
 docker-build db:
 	docker build -t $(IMAGE) . -f Dockerfile
 	docker images $(NAME)
@@ -50,6 +50,8 @@ docker-build-multi dbm:
 	docker images $(NAME)
 docker-run dr:
 	docker run -i -t $(IMAGE) 
+docker-push dp:
+	docker push $(IMAGE)
 #----------------------------------------------------------------------------------
 compose c:
 	@echo "make (compose:c) [up|down]"
