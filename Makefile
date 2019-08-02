@@ -42,7 +42,7 @@ git g:
 	@echo "make (git:g) [update|store]"
 git-update gu:
 	@make clean
-	git add *.md Makefile go.??? turn-client/ turn-server/
+	git add .gitignore *.md Makefile go.??? turn-client/ turn-server/
 	git commit -m "New repo created for pion turn test"
 	git push
 git-store gs:
