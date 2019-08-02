@@ -1,3 +1,5 @@
+MAINTAINER Stoney Kang <sikang99@gmail.com>
+
 FROM golang as builder
 RUN mkdir -p /build/bin
 ADD . /build/

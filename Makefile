@@ -38,8 +38,11 @@ run-server rs:
 #----------------------------------------------------------------------------------
 docker d:
 	@echo "make (docker:d) [build]"
+
+IMAGE=teamgrit/pion-turn:0.0.1
 docker-build db:
-	docker build -t teamgrit/pion-turn:0.0.1 .
+	docker build -t $(IMAGE) .
+	docker images $(IMAGE)
 #----------------------------------------------------------------------------------
 git g:
 	@echo "make (git:g) [update|store]"
