@@ -3,6 +3,7 @@
 - 2019/08/02
     - add functions for slack interface using [nlopes/slack](https://github.com/nlopes/slack)
     - read [A Simple Slack Bot in Go - The Bot](https://dev.to/shindakun/a-simple-slack-bot-in-go---the-bot-4olg)
+    - slack api: [Legacy tokens](https://api.slack.com/custom-integrations/legacy-tokens)
 
 - 2019/08/02
     - add docker-compose.yml
