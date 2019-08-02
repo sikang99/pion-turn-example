@@ -22,6 +22,7 @@ build b:
 	@mv $(SERVER)/$(SERVER) $(GOPATH)/bin
 	ls -al $(GOPATH)/bin/$(CLIENT) $(GOPATH)/bin/$(SERVER)
 clean c:
+	rm -f $(CLIENT)/$(CLIENT) $(SERVER)/$(SERVER)
 	rm -f $(GOPATH)/bin/$(CLIENT) $(GOPATH)/bin/$(SERVER)
 #----------------------------------------------------------------------------------
 run r:
@@ -38,6 +39,7 @@ docker-build db:
 	docker build -t teamgrit/pion-turn:0.0.1 .
 #----------------------------------------------------------------------------------
 git g:
+	@make clean
 	git add README.md Makefile turn-client/ turn-server/
 	git commit -m "New repo created for pion turn test"
 	git push
