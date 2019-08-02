@@ -4,12 +4,12 @@ MAINTAINER Stoney Kang <sikang99@gmail.com>
 # build turn client and server programs
 RUN mkdir -p /build/bin
 ADD . /build/
-RUN ls -alF /build
+#RUN ls -alF /build
 WORKDIR /build
-ENV GO111MODULE=on CGO_ENABLED=0 GOOS=linux
+ENV CGO_ENABLED=0 GOOS=linux GO111MODULE=on
 RUN go build -o bin/turn-client turn-client/main.go
 RUN go build -o bin/turn-server turn-server/main.go
-RUN ls -alF /build/bin
+#RUN ls -alF /build/bin
 
 # make a run image with programs
 FROM alpine
@@ -17,6 +17,6 @@ RUN adduser -S -D -H -h /app appuser
 USER appuser
 COPY --from=builder /build/bin/* /app/
 WORKDIR /app
-RUN ls -al .
+#RUN ls -al .
 ENV PIONS_LOG_INFO=all USERS=stoney=kang REALM=teamgrit UDP_PORT=3478 CHANNEL_BIND_TIMEOUT=100ms
 CMD ["./turn-server"]

@@ -25,6 +25,7 @@ build b:
 clean c:
 	#rm -f $(GOPATH)/bin/$(CLIENT) $(GOPATH)/bin/$(SERVER)
 	rm -f bin/*
+	docker system prune
 #----------------------------------------------------------------------------------
 run r:
 	@echo "make (run:r) [client|server]"
@@ -33,18 +34,20 @@ run-client rc:
 run-client-test rct:
 	PIONS_LOG_INFO=all $(CLIENT) -host 172.16.16.96 -realm teamgrit -user=stoney=kang -ping
 run-server rs:
-	PIONS_LOG_INFO=all USERS=stoney=kang REALM=teamgrit UDP_PORT=3478 CHANNEL_BIND_TIMEOUT=100ms $(SERVER)
+	PIONS_LOG_INFO=all USERS=stoney=kang REALM=teamgrit UDP_PORT=3478 CHANNEL_BIND_TIMEOUT=1000ms $(SERVER)
 #----------------------------------------------------------------------------------
+TAG=0.0.2
+NAME=teamgrit/pion-turn
+IMAGE=$(NAME):$(TAG)
+
 docker d:
 	@echo "make (docker:d) [build]"
-
-IMAGE=teamgrit/pion-turn:0.0.1
 docker-build db:
-	#docker build -t $(IMAGE) . -f Dockerfile.multi
 	docker build -t $(IMAGE) . -f Dockerfile
-	docker images $(IMAGE)
-	docker system prune
-
+	docker images $(NAME)
+docker-build-multi dbm:
+	docker build -t $(IMAGE) . -f Dockerfile.multi
+	docker images $(NAME)
 docker-run dr:
 	docker run -i -t $(IMAGE) 
 #----------------------------------------------------------------------------------
