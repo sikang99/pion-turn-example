@@ -18,14 +18,13 @@ edit-history eh:
 	vi HISTORY.md
 #----------------------------------------------------------------------------------
 build b:
-	GO111MODULE=on go build -o $(CLIENT)/$(CLIENT) $(CLIENT)/main.go
-	GO111MODULE=on go build -o $(SERVER)/$(SERVER) $(SERVER)/main.go
-	@mv $(CLIENT)/$(CLIENT) $(GOPATH)/bin
-	@mv $(SERVER)/$(SERVER) $(GOPATH)/bin
-	ls -al $(GOPATH)/bin/$(CLIENT) $(GOPATH)/bin/$(SERVER)
+	GO111MODULE=on go build -o bin/$(CLIENT) $(CLIENT)/main.go
+	GO111MODULE=on go build -o bin/$(SERVER) $(SERVER)/main.go
+	@mv bin/* $(GOPATH)/bin
+	ls -al $(GOPATH)/bin/turn-*
 clean c:
-	rm -f $(CLIENT)/$(CLIENT) $(SERVER)/$(SERVER)
-	rm -f $(GOPATH)/bin/$(CLIENT) $(GOPATH)/bin/$(SERVER)
+	#rm -f $(GOPATH)/bin/$(CLIENT) $(GOPATH)/bin/$(SERVER)
+	rm -f bin/*
 #----------------------------------------------------------------------------------
 run r:
 	@echo "make (run:r) [client|server]"
@@ -41,8 +40,13 @@ docker d:
 
 IMAGE=teamgrit/pion-turn:0.0.1
 docker-build db:
-	docker build -t $(IMAGE) .
+	#docker build -t $(IMAGE) . -f Dockerfile.multi
+	docker build -t $(IMAGE) . -f Dockerfile
 	docker images $(IMAGE)
+	docker system prune
+
+docker-run dr:
+	docker run -i -t $(IMAGE) 
 #----------------------------------------------------------------------------------
 git g:
 	@echo "make (git:g) [update|store]"
