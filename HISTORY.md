@@ -1,5 +1,9 @@
 ### History for developement
 
+- 2019/08/02
+    - add dockerfiles to build the docker image of turn
+    - [Containerize This! How to build Golang Dockerfiles](https://www.cloudreach.com/en/insights/blog/containerize-this-how-to-build-golang-dockerfiles/)
+    - NOTICE: CGO_ENABLED=0 is required under the alpine base
 
 - 2019/08/02
     - read [WebRTC の未来](https://gist.github.com/voluntas/59a135343538c290e515) to check the latest status
