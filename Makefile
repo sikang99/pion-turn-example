@@ -51,7 +51,6 @@ docker-run dr:
 git g:
 	@echo "make (git:g) [update|store]"
 git-update gu:
-	@make clean
 	git add .gitignore *.md Makefile go.??? turn-client/ turn-server/ Dockerfile*
 	git commit -m "Add dockerfiles including multi-stage"
 	git push
