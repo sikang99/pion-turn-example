@@ -39,9 +39,13 @@ docker-build db:
 	docker build -t teamgrit/pion-turn:0.0.1 .
 #----------------------------------------------------------------------------------
 git g:
+	@echo "make (git:g) [update|store]"
+git-update gu:
 	@make clean
-	git add README.md Makefile turn-client/ turn-server/
+	git add *.md Makefile go.??? turn-client/ turn-server/
 	git commit -m "New repo created for pion turn test"
 	git push
-
+git-store gs:
+	git config credential.helper store
+#----------------------------------------------------------------------------------
 
