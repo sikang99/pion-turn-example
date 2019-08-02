@@ -18,9 +18,9 @@ edit-history eh:
 	vi HISTORY.md
 #----------------------------------------------------------------------------------
 build b:
-	GO111MODULE=on go build -o bin/$(CLIENT) $(CLIENT)/main.go
-	GO111MODULE=on go build -o bin/$(SERVER) $(SERVER)/main.go
-	@mv bin/* $(GOPATH)/bin
+	CGO_ENABLED=0 GO111MODULE=on GOOS=linux go build -o bin/$(CLIENT) $(CLIENT)/main.go
+	CGO_ENABLED=0 GO111MODULE=on GOOS=linux go build -o bin/$(SERVER) $(SERVER)/main.go
+	@cp bin/* $(GOPATH)/bin
 	ls -al $(GOPATH)/bin/turn-*
 clean c:
 	#rm -f $(GOPATH)/bin/$(CLIENT) $(GOPATH)/bin/$(SERVER)
@@ -53,7 +53,7 @@ git g:
 git-update gu:
 	@make clean
 	git add .gitignore *.md Makefile go.??? turn-client/ turn-server/ Dockerfile*
-	git commit -m "Add multi-stage dockerfiles"
+	git commit -m "Add dockerfiles including multi-stage"
 	git push
 git-store gs:
 	git config credential.helper store
