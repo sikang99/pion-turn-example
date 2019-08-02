@@ -30,8 +30,9 @@ clean c:
 run r:
 	@echo "make (run:r) [client|server]"
 run-client rc:
-	#$(CLIENT) -host 172.17.0.1 -realm teamgrit -user=stoney=kang -ping
 	$(CLIENT) -host 172.17.0.1 -realm teamgrit -user=stoney=kang
+run-client-test rct:
+	PIONS_LOG_INFO=all $(CLIENT) -host 172.16.16.96 -realm teamgrit -user=stoney=kang -ping
 run-server rs:
 	PIONS_LOG_INFO=all USERS=stoney=kang REALM=teamgrit UDP_PORT=3478 CHANNEL_BIND_TIMEOUT=100ms $(SERVER)
 #----------------------------------------------------------------------------------
@@ -44,8 +45,8 @@ git g:
 	@echo "make (git:g) [update|store]"
 git-update gu:
 	@make clean
-	git add .gitignore *.md Makefile go.??? turn-client/ turn-server/
-	git commit -m "New repo created for pion turn test"
+	git add .gitignore *.md Makefile go.??? turn-client/ turn-server/ Dockerfile
+	git commit -m "Add multi-stage Dockerfile"
 	git push
 git-store gs:
 	git config credential.helper store
