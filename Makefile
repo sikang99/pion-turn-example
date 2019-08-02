@@ -6,7 +6,7 @@ SERVER=turn-server
 .PHONEY:usage edit
 #----------------------------------------------------------------------------------
 usage:
-	@echo "make [edit|build|run]"
+	@echo "make [edit|build|run|docker|compose]"
 #----------------------------------------------------------------------------------
 edit e:
 	@echo "make (edit:e) [client|server|history]"
@@ -53,8 +53,9 @@ docker-run dr:
 #----------------------------------------------------------------------------------
 compose c:
 	@echo "make (compose:c) [up|down]"
-compose-run cr:
-	docker-compose up
+compose-up cu:
+	docker-compose up -d
+	docker-compose ps
 compose-down cd:
 	docker-compose down
 #----------------------------------------------------------------------------------
