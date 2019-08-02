@@ -1,5 +1,6 @@
 
-./bin/
+.git/
+bin/
 
 turn-client/turn-client
 turn-server/turn-server
