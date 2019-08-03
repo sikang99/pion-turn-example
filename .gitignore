@@ -1,7 +1,7 @@
 
 .git/
 bin/
-slack/
+utils/
 
 turn-client/turn-client
 turn-server/turn-server
