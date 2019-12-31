@@ -1,4 +1,4 @@
-FROM alpine
+FROM alpine:3.8
 MAINTAINER Stoney Kang <sikang99@gmail.com>
 
 RUN adduser -S -D -H -h /app appuser

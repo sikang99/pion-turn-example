@@ -25,7 +25,7 @@ build b:
 clean:
 	#rm -f $(GOPATH)/bin/$(CLIENT) $(GOPATH)/bin/$(SERVER)
 	rm -f bin/*
-	docker system prune
+	docker system prune --force
 #----------------------------------------------------------------------------------
 run r:
 	@echo "make (run:r) [client|server]"
